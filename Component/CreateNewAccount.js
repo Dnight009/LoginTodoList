@@ -7,21 +7,28 @@ const Register = () => {
     const [userpass, setPassword] = useState('');
 
     const handleRegister = async () => {
-        try {
-            // Firebase authentication to create a new user
-            await auth().createUserWithEmailAndPassword(username, userpass);
-            Alert.alert('Đăng ký thành công!');
-        } catch (error) {
-            // Handle registration errors
-            if (error.code === 'auth/email-already-in-use') {
-                Alert.alert('Email này đã được sử dụng!');
-            } else if (error.code === 'auth/invalid-email') {
-                Alert.alert('Email không hợp lệ!');
-            } else {
-                Alert.alert('Lỗi đăng ký!', error.message);
-            }
+        if (!username || !userpass) {
+          Alert.alert('Vui lòng nhập email và mật khẩu');
+          return;
         }
-    };
+      
+        try {          
+          await auth().createUserWithEmailAndPassword(username, userpass);
+          Alert.alert('Đăng ký thành công!');
+          console.log("Registering with: ", username, userpass); 
+        } catch (error) {
+          console.log("Registration Error: ", error); // Log the error for debugging
+          // Handle registration errors
+          if (error.code === 'auth/email-already-in-use') {
+            Alert.alert('Email này đã được sử dụng!');
+          } else if (error.code === 'auth/invalid-email') {
+            Alert.alert('Email không hợp lệ!');
+          } else {
+            Alert.alert('Lỗi đăng ký!', error.message);
+          }
+        }
+      };
+      
 
     return (
         <View style={styles.container}>

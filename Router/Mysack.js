@@ -5,7 +5,6 @@ import Login from "../Component/Login"
 import Home from "../Component/Home"
 import CreateNewAccount from "../Component/CreateNewAccount"
 import FogotPass from "../Component/FogotPass"
-import { Drawer } from 'react-native-paper';
 const Stack = createStackNavigator()
 
 const MyStack = ()=>{
@@ -15,9 +14,7 @@ const MyStack = ()=>{
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name ="CreateNewAccount" component= {CreateNewAccount}/>
                 <Stack.Screen name ="FogotPass" component= {FogotPass}/>
-                {/* <Stack.Screen name ="Drawer" component={ Drawer}/> */}
-            </Stack.Navigator>
-        
+            </Stack.Navigator>        
     )   
 }
 export default MyStack

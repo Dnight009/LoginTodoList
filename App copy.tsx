@@ -85,7 +85,7 @@ const App = () => {
           style={{ ...myStyles.themeButton, backgroundColor: bgColorThemeButton }}
           onPress={() => setDarkMode(!darkMode)}
         >
-          {/* <Entypo name={darkMode ? "light-up" : "moon"} size={24} color={colorIcon} /> */}
+          
         </TouchableOpacity>
         <Text style={{ ...myStyles.historyText, color: textColorHistory }}>{lastNumber}</Text>
         <Text style={myStyles.resultText}>{currentNumber}</Text>

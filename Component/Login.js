@@ -7,11 +7,16 @@ const LoginScreen = ({ navigation }) => {
   const [userpass, setPassword] = useState('');
 
   const handleLogin = async () => {
+    if (!username || !userpass) {
+      Alert.alert('Lỗi', 'Tên đăng nhập và mật khẩu không được để trống.');
+      return;
+    }
+
     try {
       // Firebase authentication to sign in
       await auth().signInWithEmailAndPassword(username, userpass);
       Alert.alert('Thông báo', 'Đăng nhập thành công');
-      navigation.navigate('Home');
+      navigation.navigate('Home'); // Navigate to Home screen
     } catch (error) {
       if (error.code === 'auth/user-not-found') {
         Alert.alert('Lỗi', 'Tài khoản không tồn tại.');
@@ -47,6 +52,7 @@ const LoginScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+      {/* Correct the onPress to handle login */}
       <Button title="Đăng nhập" onPress={handleLogin} />
       <Button title="Đăng ký" onPress={() => navigation.navigate('CreateNewAccount')} />
     </SafeAreaView>
